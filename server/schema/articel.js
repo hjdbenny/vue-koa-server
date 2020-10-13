@@ -1,36 +1,30 @@
 import Sequelize from "sequelize";
 import sequelize from "./db.js";
-import uuid from "uuid";
 import moment from "moment";
 import utils from "../utils.js";
 
 const Model = Sequelize.Model;
-class User extends Model {}
-User.init(
+class Article extends Model {}
+Article.init(
     {
         id: {
             type: Sequelize.INTEGER,
-            // defaultValue: uuid(),
             defaultValue: utils.createId(),
             primaryKey: true,
         },
-        name: {
+        title: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        nickname: {
+        html: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        password: {
+        content: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        age: {
-            type: Sequelize.INTEGER,
-            defaultValue: Math.floor(Math.random() * (100 - 1 + 1) + 1),
-        },
-        avatar: {
+        author: {
             type: Sequelize.STRING,
             allowNull: false,
         },
@@ -45,11 +39,11 @@ User.init(
     },
     {
         sequelize,
-        modelName: "user",
+        modelName: "article",
     }
 );
-User.sync({ alter: true }).then(() => {
-    console.log("== Table: User init!");
+Article.sync({ alter: true }).then(() => {
+    console.log("== Table: Article init!");
 });
 
-export default User;
+export default Article;

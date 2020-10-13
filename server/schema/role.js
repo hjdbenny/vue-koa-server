@@ -1,6 +1,6 @@
 import Sequelize from "sequelize";
 import sequelize from "./db.js";
-import uuid from "uuid";
+import utils from "../utils.js";
 
 const Model = Sequelize.Model;
 class Role extends Model {}
@@ -8,12 +8,8 @@ class Role extends Model {}
 Role.init(
     {
         id: {
-            // type: Sequelize.UUID,
-            // defaultValue: uuid(),
             type: Sequelize.INTEGER,
-            defaultValue: Math.floor(
-                Math.random() * (99999 - 10000 + 1) + 10000
-            ),
+            defaultValue: utils.createId(),
             primaryKey: true,
         },
         uid: {

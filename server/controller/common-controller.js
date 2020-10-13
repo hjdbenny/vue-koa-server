@@ -19,6 +19,7 @@ export default {
     uploadImage: async (ctx) => {
         authMaker.check(ctx, ROLE_USER); //检验用户是否登录
         const file = ctx.request.files.file; // 获取上传文件
+        console.log("file", file)
         // 读取文件流
         const fileReader = fs.createReadStream(file.path);
         // 设置文件保存路径

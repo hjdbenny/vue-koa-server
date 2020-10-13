@@ -9,4 +9,10 @@ export default {
             .update(password)
             .digest("hex");
     },
+    idExits: async (model, id) => {
+        return (await model.findByPk(id)) ? true : false;
+    },
+    createId: () => {
+        return Math.floor(Math.random() * (99999 - 10000 + 1) + 10000);
+    },
 };

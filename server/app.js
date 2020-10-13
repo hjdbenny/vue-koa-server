@@ -27,6 +27,7 @@ app.use(errorHandler);
 app.use(
     koaBody({
         multipart: true,
+        parsedMethods: ["POST", "PUT", "PATCH", "DELETE"],
         formidable: {
             maxFileSize: 200 * 1024 * 1024, // 设置上传文件大小最大限制，默认2M
         },
